@@ -25,6 +25,7 @@
 		F6A08422181DE34000C048BB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A08401181DE33F00C048BB /* UIKit.framework */; };
 		F6A0842A181DE34000C048BB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6A08428181DE34000C048BB /* InfoPlist.strings */; };
 		F6A0842C181DE34000C048BB /* HoogleIOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6A0842B181DE34000C048BB /* HoogleIOSTests.m */; };
+		F6A08440181ED4C400C048BB /* KDQueryResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6A0843F181ED4C400C048BB /* KDQueryResultCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		F6A08427181DE34000C048BB /* HoogleIOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HoogleIOSTests-Info.plist"; sourceTree = "<group>"; };
 		F6A08429181DE34000C048BB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F6A0842B181DE34000C048BB /* HoogleIOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HoogleIOSTests.m; sourceTree = "<group>"; };
+		F6A0843E181ED4C400C048BB /* KDQueryResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDQueryResultCell.h; sourceTree = "<group>"; };
+		F6A0843F181ED4C400C048BB /* KDQueryResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDQueryResultCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +140,8 @@
 				F6A08416181DE34000C048BB /* KDViewController.m */,
 				F6A08418181DE34000C048BB /* Images.xcassets */,
 				F6A08404181DE33F00C048BB /* Supporting Files */,
+				F6A0843E181ED4C400C048BB /* KDQueryResultCell.h */,
+				F6A0843F181ED4C400C048BB /* KDQueryResultCell.m */,
 			);
 			path = HoogleIOS;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 				53C3303F181E0B25000FF31F /* KDQueryResult.m in Sources */,
 				F6A08417181DE34000C048BB /* KDViewController.m in Sources */,
 				53C3303C181DEAEF000FF31F /* KDQueryTableViewControler.m in Sources */,
+				F6A08440181ED4C400C048BB /* KDQueryResultCell.m in Sources */,
 				F6A0840A181DE33F00C048BB /* main.m in Sources */,
 				F6A0840E181DE33F00C048BB /* KDAppDelegate.m in Sources */,
 				53C33039181DE5FC000FF31F /* KDJsonQuery.m in Sources */,

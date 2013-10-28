@@ -8,8 +8,11 @@
 
 #import "KDQueryTableViewControler.h"
 #import "KDQueryResult.h"
+#import "KDQueryResultCell.h"
 
-@interface KDQueryTableViewControler () <NSURLConnectionDelegate>
+@interface KDQueryTableViewControler () <NSURLConnectionDelegate, UIWebViewDelegate>
+
+@property (strong, nonatomic) NSArray *queryResults;
 
 @end
 
@@ -47,22 +50,25 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return _queryResults.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    KDQueryResultCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    KDQueryResult *cellData = _queryResults[indexPath.row];
     
-    // Configure the cell...
+    cell.descriptionLabel.text = cellData.docs;
+    cell.urlString = cellData.location;
+    cell.typeLabel.text = cellData.type;
     
     return cell;
 }
@@ -94,7 +100,7 @@
 
 #pragma mark NSURLConnection Delegate Methods
 - (NSData *) getDataFrom:(NSString *)query{
-  NSString *url = [NSString stringWithFormat:@"http://www.haskell.org/hoogle/?mode=json&hoogle=%@&start=1&count=50",[query stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+  NSString *url = [NSString stringWithFormat:@"http://www.haskell.org/hoogle/?mode=json&hoogle=%@&start=1&count=100",[query stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
   [request setHTTPMethod:@"GET"];
   [request setURL:[NSURL URLWithString:url]];
@@ -112,6 +118,43 @@
   return oResponseData;
 }
 
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    NSString *url = webView.request.URL.absoluteString;
+    NSArray *components = [url componentsSeparatedByString:@"#"];
+    NSString *js = [NSString stringWithFormat:@"window.location.hash='#%@'", components[components.count - 1]];
+    [webView stringByEvaluatingJavaScriptFromString: js];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    KDQueryResult *cellEntry = _queryResults[indexPath.row];
+    UIViewController *webViewController = [[UIViewController alloc] init];
+    
+    UIWebView *uiWebView = [[UIWebView alloc] initWithFrame: CGRectMake(0,0,320,570)];
+    uiWebView.delegate = self;
+    NSURL *url = [NSURL URLWithString:cellEntry.location];
+    [uiWebView loadRequest:[NSURLRequest requestWithURL:url]];
+    
+    [webViewController.view addSubview: uiWebView];
+    
+    [self.navigationController pushViewController:webViewController animated:YES];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSString *text = [searchBar text];
+    NSData *searchResults = [self getDataFrom:text];
+    NSArray *data = [self parseDataFrom:searchResults];
+    self.queryResults = data;
+}
+
+- (void)setQueryResults:(NSArray *)queryResults
+{
+    _queryResults = queryResults;
+    [self.tableView reloadData];
+    return;
+}
 
 /*
 // Override to support conditional editing of the table view.

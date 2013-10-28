@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KDQueryTableViewControler : UITableViewController
-
+@interface KDQueryTableViewControler : UITableViewController <UISearchBarDelegate>
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar;
 @property (nonatomic, strong) NSString *query;
 
 @end
