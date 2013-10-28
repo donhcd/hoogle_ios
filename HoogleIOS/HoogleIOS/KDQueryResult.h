@@ -10,4 +10,8 @@
 
 @interface KDQueryResult : NSObject
 
+@property NSString *location;
+@property NSString *type;
+@property NSString *docs;
+
 @end

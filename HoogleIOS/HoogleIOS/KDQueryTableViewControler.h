@@ -10,4 +10,6 @@
 
 @interface KDQueryTableViewControler : UITableViewController
 
+@property (nonatomic, strong) NSString *query;
+
 @end

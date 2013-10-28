@@ -7,8 +7,9 @@
 //
 
 #import "KDQueryTableViewControler.h"
+#import "KDQueryResult.h"
 
-@interface KDQueryTableViewControler ()
+@interface KDQueryTableViewControler () <NSURLConnectionDelegate>
 
 @end
 
@@ -65,6 +66,52 @@
     
     return cell;
 }
+
+- (NSArray *) parseDataFrom:(NSData *)json {
+ 
+  NSError *error = nil;
+  NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:json options:0 error:&error];
+  
+  NSMutableArray *results = [[NSMutableArray alloc] init];
+  
+  NSArray *matches = [parsedObject objectForKey:@"results"];
+  
+  for (NSDictionary *match in matches) {
+    
+    KDQueryResult *q = [[KDQueryResult alloc] init];
+    
+    q.location = [match objectForKey:@"location"];
+    q.type = [match objectForKey:@"self"];
+    q.docs = [match objectForKey:@"docs"];
+    
+    [results addObject:q];
+    
+  }
+  
+  return results;
+  
+}
+
+#pragma mark NSURLConnection Delegate Methods
+- (NSData *) getDataFrom:(NSString *)query{
+  NSString *url = [NSString stringWithFormat:@"http://www.haskell.org/hoogle/?mode=json&hoogle=%@&start=1&count=50",[query stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+  [request setHTTPMethod:@"GET"];
+  [request setURL:[NSURL URLWithString:url]];
+  
+  NSError *error = [[NSError alloc] init];
+  NSHTTPURLResponse *responseCode = nil;
+  
+  NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+  
+  if([responseCode statusCode] != 200){
+    NSLog(@"Error getting %@, HTTP status code %i", url, [responseCode statusCode]);
+    return nil;
+  }
+  
+  return oResponseData;
+}
+
 
 /*
 // Override to support conditional editing of the table view.

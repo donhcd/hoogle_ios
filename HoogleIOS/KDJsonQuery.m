@@ -8,6 +8,15 @@
 
 #import "KDJsonQuery.h"
 
-@implementation KDJsonQuery
+@interface KDJsonQuery ()
+
+@property (nonatomic,strong) NSString *query;
 
 @end
+
+@implementation KDJsonQuery : NSObject
+
+
+@end
+
+

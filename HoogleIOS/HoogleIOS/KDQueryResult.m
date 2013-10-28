@@ -10,4 +10,6 @@
 
 @implementation KDQueryResult
 
+
+
 @end

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53C33039181DE5FC000FF31F /* KDJsonQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C33038181DE5FC000FF31F /* KDJsonQuery.m */; };
+		53C3303C181DEAEF000FF31F /* KDQueryTableViewControler.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C3303B181DEAEF000FF31F /* KDQueryTableViewControler.m */; };
+		53C3303F181E0B25000FF31F /* KDQueryResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C3303E181E0B25000FF31F /* KDQueryResult.m */; };
 		F6A083FE181DE33F00C048BB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A083FD181DE33F00C048BB /* Foundation.framework */; };
 		F6A08400181DE33F00C048BB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A083FF181DE33F00C048BB /* CoreGraphics.framework */; };
 		F6A08402181DE33F00C048BB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A08401181DE33F00C048BB /* UIKit.framework */; };
@@ -35,6 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		53C33037181DE5FC000FF31F /* KDJsonQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDJsonQuery.h; path = ../KDJsonQuery.h; sourceTree = "<group>"; };
+		53C33038181DE5FC000FF31F /* KDJsonQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDJsonQuery.m; path = ../KDJsonQuery.m; sourceTree = "<group>"; };
+		53C3303A181DEAEF000FF31F /* KDQueryTableViewControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDQueryTableViewControler.h; sourceTree = "<group>"; };
+		53C3303B181DEAEF000FF31F /* KDQueryTableViewControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDQueryTableViewControler.m; sourceTree = "<group>"; };
+		53C3303D181E0B25000FF31F /* KDQueryResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDQueryResult.h; sourceTree = "<group>"; };
+		53C3303E181E0B25000FF31F /* KDQueryResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDQueryResult.m; sourceTree = "<group>"; };
 		F6A083FA181DE33F00C048BB /* HoogleIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoogleIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6A083FD181DE33F00C048BB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F6A083FF181DE33F00C048BB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -114,6 +123,12 @@
 		F6A08403181DE33F00C048BB /* HoogleIOS */ = {
 			isa = PBXGroup;
 			children = (
+				53C33037181DE5FC000FF31F /* KDJsonQuery.h */,
+				53C33038181DE5FC000FF31F /* KDJsonQuery.m */,
+				53C3303A181DEAEF000FF31F /* KDQueryTableViewControler.h */,
+				53C3303B181DEAEF000FF31F /* KDQueryTableViewControler.m */,
+				53C3303D181E0B25000FF31F /* KDQueryResult.h */,
+				53C3303E181E0B25000FF31F /* KDQueryResult.m */,
 				F6A0840C181DE33F00C048BB /* KDAppDelegate.h */,
 				F6A0840D181DE33F00C048BB /* KDAppDelegate.m */,
 				F6A0840F181DE34000C048BB /* Main_iPhone.storyboard */,
@@ -254,9 +269,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53C3303F181E0B25000FF31F /* KDQueryResult.m in Sources */,
 				F6A08417181DE34000C048BB /* KDViewController.m in Sources */,
+				53C3303C181DEAEF000FF31F /* KDQueryTableViewControler.m in Sources */,
 				F6A0840A181DE33F00C048BB /* main.m in Sources */,
 				F6A0840E181DE33F00C048BB /* KDAppDelegate.m in Sources */,
+				53C33039181DE5FC000FF31F /* KDJsonQuery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +493,7 @@
 				F6A08431181DE34000C048BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F6A08432181DE34000C048BB /* Build configuration list for PBXNativeTarget "HoogleIOSTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +502,7 @@
 				F6A08434181DE34000C048BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
